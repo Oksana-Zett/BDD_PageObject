@@ -26,6 +26,8 @@ public class ReplenishCardPage {
     private SelenideElement buttonCancel =$("[data-test-id='action-cancel']");
     private SelenideElement fieldTextCard =$("[data-test-id='from'] input.input__control");
 
+    private SelenideElement error = $(withText("Ошибка!"));
+
     public ReplenishCardPage() {
         heading.shouldBe(visible);
     }
@@ -37,12 +39,14 @@ public class ReplenishCardPage {
 
     public String setSomeValueSum(String value){
         sum.sendKeys(Keys.CONTROL + "a");
+        sum.sendKeys(Keys.DELETE);
         sum.sendKeys(value);
         return fieldTextSum.getAttribute("value");
     }
 
     public String setSomeValueFrom(String value){
         from.sendKeys(Keys.CONTROL + "a");
+        from.sendKeys(Keys.DELETE);
         from.sendKeys(value);
         return fieldTextCard.getAttribute("value");
     }
@@ -50,6 +54,12 @@ public class ReplenishCardPage {
     public ErrorNotificationPage clickReplenish (){
         buttonReplenish.click();
         return new ErrorNotificationPage ();
+    }
+
+    public class ErrorNotificationPage {
+        public ErrorNotificationPage () {
+            error.shouldBe(visible);
+        }
     }
 
     public DashboardPage Replenish(String sumForReplenish, String fromForReplenish){

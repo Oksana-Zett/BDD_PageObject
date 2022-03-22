@@ -55,30 +55,30 @@ public class DashboardPage {
         return new ReplenishCardPage();
     }
 
-    public DashboardPage initialCardBalance() {
-        String firstCardNumber = (String) DataHelper.getAuthInfo().getCards().get(0);
-        String secondCardNumber = (String) DataHelper.getAuthInfo().getCards().get(1);
-        int firstCardBalance = getCardBalance(firstCardNumber);
-        int secondCardBalance = getCardBalance(secondCardNumber);
-        if (getCardBalance(firstCardNumber)>getCardBalance(secondCardNumber)){
-            var replenishSecondCardPage = replenishButton2();
-            replenishSecondCardPage.Replenish(String.valueOf(firstCardBalance-(firstCardBalance+secondCardBalance)/2),
-                    firstCardNumber);
-        } else {
-            var replenishFirstCardPage = replenishButton1();
-            replenishFirstCardPage.Replenish(String.valueOf(secondCardBalance-(firstCardBalance+secondCardBalance)/2),
-                    secondCardNumber);
-        }
-        return new DashboardPage();
-    }
-
-    public DashboardPage shouldBalanceEqual (){
-        String firstCardNumber = (String) DataHelper.getAuthInfo().getCards().get(0);
-        String secondCardNumber = (String) DataHelper.getAuthInfo().getCards().get(1);
-        int firstCardBalance = getCardBalance(firstCardNumber);
-        int secondCardBalance = getCardBalance(secondCardNumber);
-
-        Assertions.assertEquals(firstCardBalance, secondCardBalance);
-        return new DashboardPage();
-    }
+//    public DashboardPage initialCardBalance() {
+//        String firstCardNumber = (String) DataHelper.getInfoCard().getCards().get(1);
+//        String secondCardNumber = (String) DataHelper.getInfoCard().getCards().get(2);
+//        int firstCardBalance = getCardBalance(firstCardNumber);
+//        int secondCardBalance = getCardBalance(secondCardNumber);
+//        if (getCardBalance(firstCardNumber)>getCardBalance(secondCardNumber)){
+//            var replenishSecondCardPage = replenishButton2();
+//            replenishSecondCardPage.Replenish(String.valueOf(firstCardBalance-(firstCardBalance+secondCardBalance)/2),
+//                    firstCardNumber);
+//        } else {
+//            var replenishFirstCardPage = replenishButton1();
+//            replenishFirstCardPage.Replenish(String.valueOf(secondCardBalance-(firstCardBalance+secondCardBalance)/2),
+//                    secondCardNumber);
+//        }
+//        return new DashboardPage();
+//    }
+//
+//    public DashboardPage shouldBalanceEqual (){
+//        String firstCardNumber = (String) DataHelper.getInfoCard().getCards().get(1);
+//        String secondCardNumber = (String) DataHelper.getInfoCard().getCards().get(2);
+//        int firstCardBalance = getCardBalance(firstCardNumber);
+//        int secondCardBalance = getCardBalance(secondCardNumber);
+//
+//        Assertions.assertEquals(firstCardBalance, secondCardBalance);
+//        return new DashboardPage();
+//    }
 }
